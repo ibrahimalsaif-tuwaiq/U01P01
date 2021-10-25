@@ -18,50 +18,141 @@ if (!retrievedData) {
   comics = retrievedData;
 }
 
-// Render Comics Cards Function
+// Load More Function
 
-const renderCards = (newComics = null) => {
-  $(".cards").html("");
-  if (newComics == null) {
-    comicsData.forEach((comic, index) => {
-      $(".cards").append(
-        `<div class="card" onclick="renderComic(${index})"> <a href="./description.html"> <img src='${comic["img"]}' /> </a></div>`
-      );
-    });
-  } else {
-    newComics.forEach((comic, index) => {
-      $(".cards").append(
-        `<div class="card${index}"> <img src='${comic["img"]}' /> </div>`
-      );
-    });
+let currentItems = 8;
+
+const loadMore = (event) => {
+  const elementList = [...document.querySelectorAll(".cards .card")];
+  for (let i = currentItems; i < currentItems + 2; i++) {
+    if (elementList[i]) {
+      elementList[i].style.display = "block";
+    }
   }
-  setData(comicsData);
+  currentItems += 2;
+
+  if (currentItems >= elementList.length) {
+    event.target.style.display = "none";
+  }
 };
 
-renderCards();
+// Render Comic Card Function
+
+const renderCard = (comic) => {
+  $("main").hide();
+  $(".cardDesc").show();
+  $(".cardDesc").append(`
+  <div class="continer">
+  <div class="row">
+  <div class="col-xxl-3" id='comicData'>
+      <img id="descImage" src="${comic["img"]}" alt="${comic["title"]}">
+      <div id="rating">
+        <img id="starImage" src="./style/img/star2.png" alt="starImage">
+        <p> ${comic["rating"]} </p>
+      </div>
+      <div>
+       <button id="addToReadingListButton"> ${
+         comic["inReadingList"]
+           ? "Remove From Reading List"
+           : "+ Add To Reading List"
+       }</button>
+      </div>
+  </div>
+  <div class="col-xxl-9">
+    <div id="comicDesc">
+      <p> ${comic["desc"]} </p>
+    </div>
+  </div>
+  </div>
+  </div>`);
+  $("#addToReadingListButton").click(() => {
+    addToReadingList(comic);
+  });
+};
+
+// Render Comics Cards Function
+
+const renderCards = (dataArray) => {
+  $(".cards").html("");
+  if (dataArray.length <= 8) {
+    $("#loadmore").hide();
+    console.log('less');
+  } else {
+    $("#loadmore").show();
+    $("#loadmore").click(loadMore);
+    console.log('more');
+  }
+  dataArray.forEach((comic, index) => {
+    $(".cards").append(
+      `<div class="card" id="card${index}"> <img src='${comic["img"]}' /> </div>`
+    );
+    $(`#card${index}`).click(() => {
+      renderCard(comic);
+    });
+  });
+  setData(comics);
+};
+
+renderCards(comics);
+$("#loadmore").click(loadMore);
+
 
 // Search Function
 
 const searchInData = () => {
-  const value = ($("#searchQueryInput").val()).toLowerCase();
-  const searchComics = comics.filter((comic) => {
-    const comicTitle = comic["title"].toLowerCase();
-    return comicTitle.includes(value);
-  });
-  renderCards(searchComics);
+  const value = $("#searchQueryInput").val().toLowerCase();
+  if (filterValue != "All") {
+    const searchComics = comics.filter((comic) => {
+      const comicTitle = comic["title"].toLowerCase();
+      if (comicTitle.includes(value) && comic["type"] == filterValue) {
+        return comic;
+      }
+    });
+    renderCards(searchComics);
+  } else {
+    const searchComics = comics.filter((comic) => {
+      const comicTitle = comic["title"].toLowerCase();
+      if (comicTitle.includes(value)) {
+        return comic;
+      }
+    });
+    renderCards(searchComics);
+  }
 };
 
 // Filter Function
 
+let filterValue = "All";
+
+$(".filterOptions").click((event) => {
+  filterValue = $(`#${event.target.id}`).val();
+  filterTheData(filterValue);
+});
+
 const filterTheData = () => {
-  const value = $("#filterChoices").val();
   let filteredComics = [];
-  value.forEach((universe) => {
+  if (filterValue != "All") {
     comics.forEach((comic) => {
-      if (comic["type"] == universe) {
+      if (comic["type"] == filterValue) {
         filteredComics.push(comic);
       }
     });
-  });
-  renderCards(filteredComics);
+    renderCards(filteredComics);
+  } else {
+    renderCards(comics);
+  }
+};
+
+// Add To Reading List Function
+
+const addToReadingList = (comic) => {
+  if (comic["inReadingList"] == true) {
+    comic["inReadingList"] = false;
+    $("#addToReadingListButton").html("+ Add To Reading List");
+  } else {
+    comic["inReadingList"] = true;
+    $("#addToReadingListButton").html("Remove From Reading List");
+  }
+  console.log(comic);
+  setData(comics);
 };
