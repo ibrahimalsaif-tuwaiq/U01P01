@@ -24,12 +24,12 @@ let currentItems = 8;
 
 const loadMore = (event) => {
   const elementList = [...document.querySelectorAll(".cards .card")];
-  for (let i = currentItems; i < currentItems + 2; i++) {
+  for (let i = currentItems; i < currentItems + 4; i++) {
     if (elementList[i]) {
       elementList[i].style.display = "block";
     }
   }
-  currentItems += 2;
+  currentItems += 4;
 
   if (currentItems >= elementList.length) {
     event.target.style.display = "none";
@@ -74,17 +74,17 @@ const renderCard = (comic) => {
 
 const renderCards = (dataArray) => {
   $(".cards").html("");
-  if (dataArray.length <= 8) {
-    $("#loadmore").hide();
-    console.log('less');
-  } else {
-    $("#loadmore").show();
-    $("#loadmore").click(loadMore);
-    console.log('more');
-  }
+  //   if (dataArray.length <= 8) {
+  //     $("#loadMore").hide();
+  //     console.log("less");
+  //   } else {
+  //     $("#loadMore").show();
+  //     $("#loadMore").click(loadMore);
+  //     console.log("more");
+  //   }
   dataArray.forEach((comic, index) => {
     $(".cards").append(
-      `<div class="card" id="card${index}"> <img src='${comic["img"]}' /> </div>`
+      `<div class="card" id="card${index}"> <img src='${comic["img"]}' /> <div class="imageText"> Centered </div> </div>`
     );
     $(`#card${index}`).click(() => {
       renderCard(comic);
@@ -94,8 +94,7 @@ const renderCards = (dataArray) => {
 };
 
 renderCards(comics);
-$("#loadmore").click(loadMore);
-
+$("#loadMore").click(loadMore);
 
 // Search Function
 
@@ -156,3 +155,15 @@ const addToReadingList = (comic) => {
   console.log(comic);
   setData(comics);
 };
+
+//
+
+/* Open when someone clicks on the span element */
+function openNav() {
+    document.getElementById("myNav").style.height = "100%";
+}
+
+/* Close when someone clicks on the "x" symbol inside the overlay */
+function closeNav() {
+  document.getElementById("myNav").style.height = "0%";
+}

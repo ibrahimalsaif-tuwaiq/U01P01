@@ -17,26 +17,17 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="./index.html">
-                    <img src="./style/img/logo.png" alt="" width="160" height="80">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./index.html">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Reading List</a>
-                        </li>
-                    </ul>
-                </div>
+        <div id="myNav" class="overlay">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <div class="overlay-content">
+                <a href="./index.html">Home</a>
+                <a href="#">Reading List</a>
             </div>
+        </div>
+        <nav>
+            <img src="./style/img/logo.png" id="logo" alt="logo">
+            <input type="image" id="navbarOpen" onclick="openNav()" 
+                            src="./style/img/menuIcon.png" />
         </nav>
     </header>
 
@@ -46,13 +37,13 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="#" class="d-block w-100" alt="Marvel">
+                            <img src="./style/img/marvel_banner.jpg" class="d-block w-100 bannerImage" alt="Marvel Banner">
                         </div>
                         <div class="carousel-item">
-                            <img src="#" class="d-block w-100" alt="DC">
+                            <img src="./style/img/DC_banner.jpg" class="d-block w-100 bannerImage" alt="DC Banner">
                         </div>
                         <div class="carousel-item">
-                            <img src="#" class="d-block w-100" alt="Marvel">
+                            <img src="./style/img/image_banner.jpg" class="d-block w-100 bannerImage" alt="Image Banner">
                         </div>
                     </div>
                 </div>
@@ -75,10 +66,14 @@
                 <div class="col">
                     <div id="filtering">
                         <i class="fas fa-filter"></i>
-                        <button class="filterOptions" id="filterMarvel" value="Marvel">Marvel</button>
-                        <button class="filterOptions" id="filterDC" value="DC">DC</button>
-                        <button class="filterOptions" id="filterOthers" value="Others">Others</button>
-                        <button class="filterOptions" id="filterAll" value="All">All</button>
+                        <input type="image" class="filterOptions" id="filterMarvel" value="Marvel"
+                            src="./style/img/marvel_logo.png" />
+                        <input type="image" class="filterOptions" id="filterDC" value="DC"
+                            src="./style/img/DC_logo.png" />
+                        <input type="image" class="filterOptions" id="filterOthers" value="Others"
+                            src="./style/img/other.png" />
+                        <input type="image" class="filterOptions" id="filterAll" value="All"
+                            src="./style/img/reset.png" />
                     </div>
                 </div>
             </div>
@@ -90,7 +85,7 @@
         </div>
 
         <div class="loadButton">
-            <button id="loadmore">Load More</button>
+            <button id="loadMore">Load More</button>
         </div>
 
     </main>
