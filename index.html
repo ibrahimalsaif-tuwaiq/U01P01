@@ -21,13 +21,13 @@
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <div class="overlay-content">
                 <a href="./index.html">Home</a>
-                <a href="#">Reading List</a>
+                <a href="./readingList.html">Reading List</a>
+                <a href="./addNewComic.html">Add New Comic</a>
             </div>
         </div>
         <nav>
-            <img src="./style/img/logo.png" id="logo" alt="logo">
-            <input type="image" id="navbarOpen" onclick="openNav()" 
-                            src="./style/img/menuIcon.png" />
+            <img src="./style/img/logo.png" onclick="window.open('./index.html', '_self')" id="logo" alt="logo">
+            <input type="image" id="navbarOpen" onclick="openNav()" src="./style/img/menuIcon.png" />
         </nav>
     </header>
 
@@ -37,13 +37,15 @@
                 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img src="./style/img/marvel_banner.jpg" class="d-block w-100 bannerImage" alt="Marvel Banner">
+                            <img src="./style/img/marvel_banner.jpg" class="d-block w-100 bannerImage"
+                                alt="Marvel Banner">
                         </div>
                         <div class="carousel-item">
                             <img src="./style/img/DC_banner.jpg" class="d-block w-100 bannerImage" alt="DC Banner">
                         </div>
                         <div class="carousel-item">
-                            <img src="./style/img/image_banner.jpg" class="d-block w-100 bannerImage" alt="Image Banner">
+                            <img src="./style/img/image_banner.jpg" class="d-block w-100 bannerImage"
+                                alt="Image Banner">
                         </div>
                     </div>
                 </div>
@@ -51,7 +53,7 @@
         </div>
 
         <div class="continer" id="options">
-            <div class="row">
+            <div class="row" id="optionsRow">
                 <div class="col">
                     <div class="searchBar">
                         <input id="searchQueryInput" type="text" placeholder="Search" oninput="searchInData()" />

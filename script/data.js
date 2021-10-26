@@ -6,7 +6,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'DC',
-        rating: 5,
+        rating: {rate: 5, total: 0},
     },
     {
         title: 'Nimona',
@@ -15,7 +15,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Others',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Maus: A Survivors Tale',
@@ -24,7 +24,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Others',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Daytripper',
@@ -33,7 +33,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Marvel',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Watchmen',
@@ -42,7 +42,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'DC',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Nimona',
@@ -51,7 +51,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Others',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Maus: A Survivors Tale',
@@ -60,7 +60,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Others',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Daytripper',
@@ -69,7 +69,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Marvel',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Watchmen',
@@ -78,7 +78,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'DC',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Nimona',
@@ -87,7 +87,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Others',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Maus: A Survivors Tale',
@@ -96,7 +96,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Others',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Daytripper',
@@ -105,7 +105,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Marvel',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Watchmen',
@@ -114,7 +114,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'DC',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Nimona',
@@ -123,7 +123,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Others',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Maus: A Survivors Tale',
@@ -132,7 +132,7 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Others',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     },
     {
         title: 'Daytripper',
@@ -141,6 +141,6 @@ let comicsData = [
         inReadingList: false,
         isCompeleted: false,
         type: 'Marvel',
-        rating: 'no rating yet',
+        rating: {rate: 'no rating yet', total: 0},
     }
 ]

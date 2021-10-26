@@ -1,3 +1,5 @@
+/* Global style */
+
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +16,8 @@ main {
   flex: 1;
 }
 
+/* navabr style */
+
 nav {
   background-color: #d01e00;
   display: flex;
@@ -29,6 +33,10 @@ nav {
 #logo {
   width: 16rem;
   height: 8rem;
+}
+
+#logo:hover {
+  cursor: pointer;
 }
 
 #navbarOpen {
@@ -82,18 +90,6 @@ nav {
   font-size: 60px;
 }
 
-/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */
-@media screen and (max-height: 450px) {
-  .overlay a {
-    font-size: 20px;
-  }
-  .overlay .closebtn {
-    font-size: 40px;
-    top: 15px;
-    right: 35px;
-  }
-}
-
 /*  Home Page  */
 
 .bannerImage {
@@ -145,6 +141,7 @@ nav {
 
 #filtering {
   width: 15rem;
+  height: 2.6rem;
   border: 1px solid black;
   border-radius: 1.625rem;
   float: right;
@@ -183,20 +180,98 @@ nav {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   margin: 0 auto;
-  max-width: 80%;
+  max-width: 70%;
   padding: 1.8rem 1.7rem;
   grid-gap: 1.9rem;
   align-items: stretch;
 }
 
+/**/
+
 .card {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.card .content-overlay {
+  background: rgba(0,0,0,0.7);
+  position: absolute;
+  height: 99%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  -moz-transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card:hover .content-overlay{
+  opacity: 1;
+}
+
+.content-image{
+  width: 100%;
+}
+
+.content-details {
+  position: absolute;
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.card:hover .content-details{
+  top: 50%;
+  left: 50%;
+  opacity: 1;
+}
+
+.content-details h3{
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.15rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.content-details p{
+  color: #fff;
+  font-size: 1rem;
+}
+
+.fadeIn-bottom{
+  top: 80%;
+}
+
+/**/
+
+/* .card {
   display: none;
   border-radius: 4px;
   box-shadow: 0 2px 2px 1px rgba(0, 0, 0, 0.1);
   width: 100%;
   height: 400px;
   transition: all 0.3s;
-  position: relative;
 }
 
 .cards .card:nth-child(-n + 8) {
@@ -209,29 +284,17 @@ nav {
   position: absolute;
   left: 0;
   top: 0;
-}
-
-/* .imageText {
-  display: none;
-  z-index: 100;
-  position: absolute;
-  color: white;
-  font-size: 24px;
-  font-weight: bold;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 } */
 
 /* .card:hover .imageText {
   display: block;
-  z-index: 4;
+  z-index: 50;
 } */
 
-.card:hover {
+/* .card:hover {
   transform: scale(1.05);
   filter: brightness(50%);
-}
+} */
 
 .loadButton {
   display: flex;
@@ -278,6 +341,10 @@ nav {
   display: flex;
 }
 
+#rateScore {
+  text-align: center;
+}
+
 #starImage {
   height: 2rem;
   width: 2rem;
@@ -287,6 +354,24 @@ nav {
   font-size: 150%;
   font-weight: bold;
   margin-left: 1rem;
+}
+
+#rateButton {
+  width: 7rem;
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 1rem;
+  background: #1b51b4;
+  padding: 1rem 1.5rem;
+  margin: 0.5rem 0 1rem;
+  text-decoration: none;
+  border: none;
+}
+
+#rateButton:hover {
+  background: #1d5dd4;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 #addToReadingListButton {
@@ -312,13 +397,36 @@ nav {
   margin: 2rem 1rem;
 }
 
+#readButtonCon {
+  display: flex;
+  justify-content: center;
+}
+
+#readButton {
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 1rem;
+  background: #da6900;
+  padding: 1rem 1.5rem;
+  margin: 2rem 0 1rem;
+  text-decoration: none;
+  border: none;
+}
+
+#readButton:hover {
+  background: #e97100;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 /* Footer */
 
 #footer {
   background-color: #d01e00;
   color: white;
   text-align: center;
-  height: 1.7rem;
+  font-size: 150%;
+  height: 2.5rem;
   width: 100%;
 }
 
@@ -330,6 +438,10 @@ nav {
   #comicDesc p {
     margin: 0;
   }
+
+  #readButtonCon {
+    display: block;
+  }
 }
 
 @media only screen and (max-width: 450px) {
@@ -339,4 +451,38 @@ nav {
     height: 26rem;
     width: 16rem;
   }
+
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  /*  Description Page */
+
+  #filtering {
+    margin: 2rem 1.5rem;
+    float: left;
+  }
+
+  /* .searchBar {
+    position: absolute;
+  } */
+
+  /* #options {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  } */
+
 }

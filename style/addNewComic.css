@@ -1,0 +1,157 @@
+/* Global style */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+/* navabr style */
+
+nav {
+  background-color: #d01e00;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#logo,
+#navbarOpen {
+  margin-left: auto;
+}
+
+#logo {
+  width: 16rem;
+  height: 8rem;
+}
+
+#logo:hover {
+  cursor: pointer;
+}
+
+#navbarOpen {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 3rem;
+}
+
+.overlay {
+  width: 100%;
+  height: 0;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  background-color: rgb(175, 26, 0);
+  background-color: rgba(175, 26, 0, 0.9);
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.overlay-content {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 300%;
+  font-weight: bold;
+  color: #fedb0e;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+  color: #f1f1f1;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+/* Add New Comic */
+
+#addNewTitle {
+  text-align: center;
+  margin: 4rem 0;
+}
+
+#comicForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  padding: 2rem;
+  width: 70%;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+
+#addNewComicButton {
+  display: flex;
+  justify-content: center;
+}
+
+#addButton {
+  border-radius: 28px;
+  color: #ffffff;
+  font-size: 1rem;
+  background: #e60000;
+  padding: 0.5rem 2rem;
+  margin: 2rem 0 1rem;
+  text-decoration: none;
+  border: none;
+}
+
+#addButton:hover {
+  background: #ff0000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Footer */
+
+#footer {
+  background-color: #d01e00;
+  color: white;
+  text-align: center;
+  font-size: 150%;
+  height: 2.5rem;
+  width: 100%;
+}
+
+/* Media Queries */
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    font-size: 20px;
+  }
+  .overlay .closebtn {
+    font-size: 40px;
+    top: 15px;
+    right: 35px;
+  }
+}
