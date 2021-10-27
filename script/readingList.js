@@ -49,8 +49,10 @@ const removeFromReadingList = (comic) => {
 
 const renderReadingListCards = (dataArray) => {
   $(".cards").html("");
+  let readingListCard = 0;
   dataArray.forEach((comic, index) => {
     if (comic["inReadingList"] == true) {
+      readingListCard++;
       $(".cards").append(
         `<div class="card" id="card${index}">
         <div class="content-overlay"></div>
@@ -66,8 +68,8 @@ const renderReadingListCards = (dataArray) => {
       removeFromReadingList(comic);
     });
   });
-  $(".card").slice(0, 4).show();
-  if (dataArray.length > 4) {
+  $(".card").slice(0, 8).show();
+  if (readingListCard > 8) {
     $("#loadMore").show();
   } else {
     $("#loadMore").hide();

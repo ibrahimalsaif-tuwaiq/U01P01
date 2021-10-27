@@ -128,8 +128,8 @@ const renderCards = (dataArray) => {
       renderCard(comic);
     });
   });
-  $(".card").slice(0, 4).show();
-  if (dataArray.length > 4) {
+  $(".card").slice(0, 8).show();
+  if (dataArray.length > 8) {
     $("#loadMore").show();
   } else {
     $("#loadMore").hide();
