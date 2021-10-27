@@ -111,6 +111,12 @@ nav {
   padding: 2rem 5rem;
 }
 
+#optionsRow {
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+}
+
 .searchBar {
   width: 300px;
   display: flex;
@@ -147,7 +153,6 @@ nav {
   height: 2.6rem;
   border: 1px solid black;
   border-radius: 1.625rem;
-  float: right;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -183,7 +188,7 @@ nav {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   margin: 0 auto;
-  max-width: 80%;
+  max-width: 70%;
   padding: 1.8rem 1.7rem;
   grid-gap: 1.9rem;
   align-items: stretch;
@@ -474,23 +479,11 @@ nav {
 }
 
 @media only screen and (max-width: 750px) {
-  /*  Description Page */
 
-  #filtering {
-    margin: 2rem 1.5rem;
-    float: left;
-  }
-
-  /* .searchBar {
-    position: absolute;
-  } */
-
-  /* #options {
-    height: 200px;
-    display: flex;
+  #optionsRow {
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-  } */
+    height: 7rem;
+  }
 
 }
