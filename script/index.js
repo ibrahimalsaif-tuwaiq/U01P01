@@ -50,7 +50,7 @@ const renderCard = (comic) => {
       <h2 id="descTitle"> ${comic["title"]} </h2>
       <img id="descImage" src="${comic["img"]}" alt="${comic["title"]}">
       <div id="rating">
-        <img id="starImage" src="./style/img/star2.png" alt="starImage">
+        <img id="starImage" src="./style/img/star.png" alt="starImage">
         <p id="ratingScore"> ${comic["rating"]["rate"]} </p>
       </div>
       <div>
