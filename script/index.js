@@ -18,21 +18,23 @@ if (!retrievedData) {
   comics = retrievedData;
 }
 
+// Navbar Control
+
+const openNav = () => {
+  document.getElementById("myNav").style.height = "100%";
+};
+
+const closeNav = () => {
+  document.getElementById("myNav").style.height = "0%";
+};
+
 // Load More Function
 
-let currentItems = 8;
-
 const loadMore = (event) => {
-  const elementList = [...document.querySelectorAll(".cards .card")];
-  for (let i = currentItems; i < currentItems + 4; i++) {
-    if (elementList[i]) {
-      elementList[i].style.display = "block";
-    }
-  }
-  currentItems += 4;
-
-  if (currentItems >= elementList.length) {
-    event.target.style.display = "none";
+  event.preventDefault();
+  $(".card:hidden").slice(0, 4).fadeIn("slow");
+  if ($(".card:hidden").length == 0) {
+    $("#loadMore").fadeOut("slow");
   }
 };
 
@@ -45,6 +47,7 @@ const renderCard = (comic) => {
   <div class="continer">
   <div class="row">
   <div class="col-xxl-3" id='comicData'>
+      <h2 id="descTitle"> ${comic["title"]} </h2>
       <img id="descImage" src="${comic["img"]}" alt="${comic["title"]}">
       <div id="rating">
         <img id="starImage" src="./style/img/star2.png" alt="starImage">
@@ -52,7 +55,7 @@ const renderCard = (comic) => {
       </div>
       <div>
        <button id="rateButton" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ratingModal">
-       Rate
+       <i class="far fa-star"></i>  Rate
       </button>
       </div>
       <div class="modal fade" id="ratingModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -68,7 +71,7 @@ const renderCard = (comic) => {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="rateFunButton" class="btn btn-primary">Rate</button>
+                    <button type="button" id="rateFunButton" class="btn btn-warning">Rate</button>
                 </div>
             </div>
         </div>
@@ -76,16 +79,17 @@ const renderCard = (comic) => {
       <div>
        <button id="addToReadingListButton"> ${
          comic["inReadingList"]
-           ? "Remove From Reading List"
-           : "+ Add To Reading List"
+           ? '<i class="fas fa-bookmark"></i> Remove From Reading List'
+           : '<i class="far fa-bookmark"></i> Add To Reading List'
        }</button>
       </div>
   </div>
   <div class="col-xxl-9">
+    <h2 id="descTitleXXL"> ${comic["title"]} </h2>
     <div id="comicDesc">
       <p> ${comic["desc"]} </p>
       <div id="readButtonCon">
-       <button id="readButton" type="button"> Click To Read </button>
+       <button id="readButton" type="button"><i class="fas fa-book-open"></i>  Click To Read</button>
       </div>
     </div>
   </div>
@@ -101,7 +105,7 @@ const renderCard = (comic) => {
     $("#rateScore").html($("#rateRange").val());
   });
   $("#readButton").click(() => {
-    // window.open('./readingList.html');
+    window.open(`${comic["comicLink"]}`);
   });
 };
 
@@ -109,14 +113,6 @@ const renderCard = (comic) => {
 
 const renderCards = (dataArray) => {
   $(".cards").html("");
-  //   if (dataArray.length <= 8) {
-  //     $("#loadMore").hide();
-  //     console.log("less");
-  //   } else {
-  //     $("#loadMore").show();
-  //     $("#loadMore").click(loadMore);
-  //     console.log("more");
-  //   }
   dataArray.forEach((comic, index) => {
     $(".cards").append(
       `<div class="card" id="card${index}">
@@ -124,22 +120,23 @@ const renderCards = (dataArray) => {
         <img class="content-image" src='${comic["img"]}' />
         <div class="content-details fadeIn-bottom">
             <h3 class="content-title">${comic["title"]}</h3>
-            <p class="content-text">Click To Read More</p>
+            <button class="ReadMore" id="ReadMore${index}" type="button"> Click To Read More </button>
         </div>
        </div>`
     );
-    $(`#card${index}`).click(() => {
+    $(`#ReadMore${index}`).click(() => {
       renderCard(comic);
     });
   });
+  $(".card").slice(0, 4).show();
+  if (dataArray.length > 4) {
+    $("#loadMore").show();
+  } else {
+    $("#loadMore").hide();
+  }
+  $("#loadMore").click(loadMore);
   setData(comics);
 };
-
-// Start Page
-
-renderCards(comics);
-
-$("#loadMore").click(loadMore);
 
 // Search Function
 
@@ -192,10 +189,14 @@ const filterTheData = () => {
 const addToReadingList = (comic) => {
   if (comic["inReadingList"] == true) {
     comic["inReadingList"] = false;
-    $("#addToReadingListButton").html("+ Add To Reading List");
+    $("#addToReadingListButton").html(
+      '<i class="far fa-bookmark"></i> Add To Reading List'
+    );
   } else {
     comic["inReadingList"] = true;
-    $("#addToReadingListButton").html("Remove From Reading List");
+    $("#addToReadingListButton").html(
+      '<i class="fas fa-bookmark"></i> Remove From Reading List'
+    );
   }
   setData(comics);
 };
@@ -228,12 +229,6 @@ const rateComic = (comic) => {
   setData(comics);
 };
 
-// Navbar Control
+// Start Page
 
-const openNav = () => {
-  document.getElementById("myNav").style.height = "100%";
-};
-
-const closeNav = () => {
-  document.getElementById("myNav").style.height = "0%";
-};
+renderCards(comics);
