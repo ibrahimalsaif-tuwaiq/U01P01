@@ -36,9 +36,9 @@ const addNewComic = () => {
     img: $("#comicImage").val(),
     desc: $("#comicDescription").val(),
     inReadingList: false,
-    isCompeleted: false,
     type: $("#comicOption").val(),
     rating: { rate: "no rating yet", total: 0 },
+    comicLink: $("#comicLink").val()
   });
   setData(comics);
 };

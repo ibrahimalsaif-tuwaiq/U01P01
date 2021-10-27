@@ -59,7 +59,7 @@ const renderReadingListCards = (dataArray) => {
         <img class="content-image" src='${comic["img"]}' />
         <div class="content-details fadeIn-bottom">
             <h3 class="content-title">${comic["title"]}</h3>
-            <button class="removeFromList" id="removeFromList${index}" type="button"><i class="fas fa-trash"></i> Remove From Reading List </button>
+            <button class="removeFromList" id="removeFromList${index}" type="button"><i class="fas fa-trash"></i> Remove From List </button>
         </div>
        </div>`
       );
